@@ -14,13 +14,6 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/signup" element={<SignUp />} />
-        <Route path="/activityindex" element={<ActivityIndex />} />
-        <Route path="/activityshow" element={<ActivityShow />} />
-        <Route path="/activitynew" element={<ActivityNew />} />
-        <Route path="/activityedit" element={<ActivityEdit />} />
-        <Route path="/buddyprofile" element={<BuddyProfile />} />
-        <Route path="*" element={<NotFound />} /> */}
         <Route path="/Friends" element={<Friends />} />
         <Route path="/BuddyProfile" element={<BuddyProfile />} />
         <Route path="/LogIn" element={<LogIn />} />

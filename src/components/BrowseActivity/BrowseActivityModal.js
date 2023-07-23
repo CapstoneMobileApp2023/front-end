@@ -28,28 +28,28 @@ const BrowseActivityModal = () => {
         </Modal.Header>
         <Modal.Body>
           <Text id="modal-title" size={14}>
-            <a href="#">WEIGHT LIFTING</a>
+            <a href="/weight%lifting">WEIGHT LIFTING</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">RUNNING</a>
+            <a href="/running">RUNNING</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">YOGA</a>
+            <a href="/yoga">YOGA</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">BASKETBALL</a>
+            <a href="/basketball">BASKETBALL</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">SOCCER</a>
+            <a href="/soccer">SOCCER</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">HIKING</a>
+            <a href="/hiking">HIKING</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">CYCLING</a>
+            <a href="/cycling">CYCLING</a>
           </Text>
           <Text id="modal-title" size={14}>
-            <a href="#">DANCING</a>
+            <a href="/dancing">DANCING</a>
           </Text>
         </Modal.Body>
         <Modal.Footer justify="space-around">
