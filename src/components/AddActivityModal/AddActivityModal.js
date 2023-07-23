@@ -1,6 +1,7 @@
 import React from "react";
-import { Modal, Input, Button, Text } from "@nextui-org/react";
+import { Modal, Input, Button, Text, css } from "@nextui-org/react";
 import ActivityDropDown from "../ActivityDropDown";
+import styles from '/Users/learnacademy/Desktop/capstone/front-end/src/styles/AddActivityModal.css';
 
 
 
@@ -14,8 +15,8 @@ const AddActivityModal = () => {
   return (
     <div>
 
-      <Button auto color="#FFCD4E"  shadow onPress={handler}>
-        +
+      <Button className="button" auto color="#FFCD4E"  shadow onPress={handler}>
+        <p className="plus">+</p>
       </Button>
       <Modal
         closeButton
@@ -23,6 +24,7 @@ const AddActivityModal = () => {
         aria-labelledby="modal-title"
         open={visible}
         onClose={closeHandler}
+        className="open-modal"
         
       >
         <Modal.Header>
@@ -31,27 +33,31 @@ const AddActivityModal = () => {
           </Text>
         </Modal.Header>
         <Modal.Body>
-          <ActivityDropDown/>
+          <ActivityDropDown  className="modal-dropdown"/>
 
           <Input
+            className="input-field"
             clearable
             bordered
             fullWidth
-            color="primary"
+            color="red"
             size="lg"
             placeholder="EVENT"
-            contentLeft={<Text fill="currentColor" />}
+            contentLeft={<Text fill="red" />}
+   
           />
           <Input
+            className="input-field"
             clearable
             bordered
             fullWidth
             color="primary"
             size="lg"
             placeholder="TIME"
-            contentLeft={<Text fill="currentColor" />}
+            contentLeft={<Text fill="red" />}
           />
           <Input
+            className="input-field"
             clearable
             bordered
             fullWidth
@@ -61,6 +67,7 @@ const AddActivityModal = () => {
             contentLeft={<Text fill="currentColor" />}
           />
           <Input
+            className="input-field"
             clearable
             bordered
             fullWidth
@@ -70,6 +77,7 @@ const AddActivityModal = () => {
             contentLeft={<Text fill="currentColor" />}
           />
           <Input
+            className="input-field"
             clearable
             bordered
             fullWidth
@@ -80,10 +88,10 @@ const AddActivityModal = () => {
           />
         </Modal.Body>
         <Modal.Footer justify="space-around">
-          <Button auto flat color="#FFCD4E" onPress={closeHandler}>
+          <Button className="modal-buttons" auto flat onPress={closeHandler}>
             CLOSE
           </Button>
-          <Button auto color="#FFCD4E" onPress={closeHandler}>
+          <Button className="modal-buttons" auto flat onPress={closeHandler}>
             CREATE ACTIVITY
           </Button>
         </Modal.Footer>

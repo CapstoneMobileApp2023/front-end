@@ -1,0 +1,18 @@
+
+body {}
+
+.modal-dropdown {
+  display: flex;
+  justify-content: left;
+}
+
+.text-gold {
+  color: gold;
+  /* background-color: grey; */
+}
+
+.dropdown-background {
+  background-color: black;
+  border: 5px solid gold;
+  border-radius: 15px;
+}
