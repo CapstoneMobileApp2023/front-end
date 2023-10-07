@@ -36,37 +36,37 @@ const ActivityShow = ({activities, deleteActivity, currentUser, createUserActivi
         <img currentActivity={currentActivity}/>
         <div/>
 
-          <Text>{currentActivity?.category}</Text>
+          <p>{currentActivity?.category}</p>
 
-        <Text>ACTIVITY NAME</Text>
+        <p>ACTIVITY NAME</p>
 
-        <Text>
-        {currentActivity?.activity_name}</Text>
+        <p>
+        {currentActivity?.activity_name}</p>
 
-        <Text>Time</Text>
+        <p>Time</p>
 
-        <Text>{currentActivity?.start_time}</Text>
+        <p>{currentActivity?.start_time}</p>
 
-        <Text>Duration</Text>
+        <p>Duration</p>
 
-        <Text> {currentActivity?.duration}</Text>
+        <p> {currentActivity?.duration}</p>
 
-        <Text>Location</Text>
+        <p>Location</p>
 
-        <Text> {currentActivity?.location}</Text>
+        <p> {currentActivity?.location}</p>
 
-        <Text>Info</Text>
+        <p>Info</p>
 
-        <Text>{currentActivity?.description}</Text>
+        <p>{currentActivity?.description}</p>
 
-        <Text>CREATOR ID</Text>
+        <p>CREATOR ID  <button>Add Contact</button></p>
 
-        <Text>{currentUser?.id}</Text>
+        <p>{currentUser?.id}</p>
 
-        <Text>Attendees</Text>
+        <p>Attendees</p>
 
         {buddyUp?
-          <Text>{currentUser.name}</Text>
+          <p>{currentUser.name}</p>
         :null}
 
   </div>

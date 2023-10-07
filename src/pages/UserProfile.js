@@ -2,7 +2,7 @@ import React from 'react'
 // import { Container, Image } from '@nextui-org/react';
 import styles from "../styles/BuddyProfile.css";
 import { Card, Col, Text } from "@nextui-org/react";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, NavLink } from 'react-router-dom';
 import AddActivityModal from '../components/AddActivityModal'
 
 const BuddyProfile = ({currentUser, userActivity, activities}) => {
@@ -31,7 +31,9 @@ const BuddyProfile = ({currentUser, userActivity, activities}) => {
     <h1 className='your_profile'>
       Your Profile
     </h1>
-
+    <NavLink to={`/`}>
+      <button>EDIT</button>
+    </NavLink>
       <img
           className="profileimg1"
           src="src/assets/PXL_20230325_185527781.jpg"

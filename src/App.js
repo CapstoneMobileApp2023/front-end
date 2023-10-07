@@ -23,17 +23,13 @@ function App() {
 // const url = "https://whim.onrender.com"
   const navigate = useNavigate()
 
-useEffect(() => {
-  readActivity()
-}, [])
-
-useEffect(() => {
-  const loggedInUser = localStorage.getItem("token")
-  if (loggedInUser) {
-    setCurrentUser(loggedInUser)
-  }
-  readActivity()
-}, [])
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("token")
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser)
+    }
+    readActivity()
+  }, [])
 
 // user_activities
   useEffect(() => {
