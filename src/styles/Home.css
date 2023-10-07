@@ -1,14 +1,20 @@
-.home_background {
-  /* color: yellow; */
-  background-color: #020202;
+:root {
+  --primary-color: #fe8904;
+  --secondary-color: ;
+  --background-color: black;
 }
 
-.title {
+.home_background {
+  background-color: #8ECAE6;
+  height: 100vh;
+}
+
+.homeBody > .title {
   color: white;
 }
 
 .time-frame {
-  color: #ffcd4e;
+  color: #F24C00;
 }
 
 .button {
@@ -16,7 +22,7 @@
   position: fixed;
   right: 100px;
   bottom: 50px;
-  background-color: #FFCD4E;
+  background-color: #fc8bcb;
   border: none;
   border-radius: 20px;
   font-size: 20px;

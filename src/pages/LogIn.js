@@ -1,15 +1,18 @@
-import React, { useRef, useState } from 'react'
-import { Input, Spacer, Button, Grid } from "@nextui-org/react";
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, { useRef } from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from "../styles/LogIn.css"
+import AddActivityModal from '../components/AddActivityModal'
 
-const LogIn = ({login, currentUser}) => {
+const LogIn = ({login}) => {
   const formRef = useRef()
 
   const handleSubmit = (e) => {
     e.preventDefault()
+        // stores the form entries in a variable
     const formData = new FormData(formRef.current)
+        // creates an object from entries
     const data = Object.fromEntries(formData)
+        // stores user info in a format for JWT
     const userInfo = {
       "user":{ email: data.email, password: data.password}
     }
@@ -17,44 +20,35 @@ const LogIn = ({login, currentUser}) => {
   }
 
   return (
-    <>
-    <div className="title_logo">
-    <img src="/buddy.png"/>
-    <h1 id="buddy">BUDDY</h1>
-    </div>
-    <form ref={formRef} onSubmit={handleSubmit}>
-      <div className='container-card'>
-        <Spacer y={2.5} />
-        <Input css={{textAlign:'$center'}}width="250px" labelPlaceholder="Email" type='email' name='email' initialValue="" color="warning"/>
-        <Spacer y={2.5} />
-        <Input.Password width="250px" labelPlaceholder="Password" type='password' name='password' initialValue="" color="warning"/>
+  <>
+  <div className='loginBody'>
+    <img src="/logo.png" alt='Promptu Logo'/>
 
-        <Spacer y={1.5} />
-        <div className='buttons'>
-          <Grid>
-          <NavLink >
-            <Button
-            auto
-            css={{ color: "black", bg: "#FFCD4E" }}
-            type='submit'>
-              Log In
-            </Button>
-            </NavLink>
-          </Grid>
-          <Spacer y={1.5} />
-
-        </div>
-      </div>
+  <h1>Promptu</h1>
+    <form
+      className='loginForm'
+      ref={formRef}
+      onSubmit={handleSubmit}
+    >
+      <input
+        type='email'
+        name='email'
+        placeholder='Email'
+      />
+      <input
+        type='password'
+        name='password'
+        placeholder='Password'
+      />
+      <button className='loginButton' type='submit' onClick={handleSubmit}>
+        Log In
+      </button>
+      <NavLink to="/signup" className='signup'>
+        Sign Up
+      </NavLink>
     </form>
-    <Grid>
-        <NavLink to="/signup">
-          <Button
-          auto
-          css={{ color: "black", bg: "#FFCD4E" }}>
-            Sign Up
-          </Button>
-          </NavLink>
-        </Grid>
+
+    </div>
   </>
   )
 }

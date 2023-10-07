@@ -1,11 +1,11 @@
-button {
+/* button {
   border: none;
   color: black;
   background-color: #ffcd4e;
   margin: 10px;
   border-radius: 5px;
   padding: 10px;
-}
+} */
 
 .card_and_links {
   display: flex;
@@ -24,9 +24,11 @@ button {
 transform: scale(1.07);
 cursor: pointer;
 }
+
 #pic_card_links{
 display: flex;
 }
+
 .activity_pic {
   display: flex;
   flex-direction: row;

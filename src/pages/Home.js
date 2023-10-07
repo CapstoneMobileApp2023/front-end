@@ -1,5 +1,5 @@
 import React from 'react'
-import AddActivityModal from '../components/AddActivityModal/AddActivityModal'
+import AddActivityModal from '../components/AddActivityModal'
 import ActivityCard from '../components/ActivityCard'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -27,94 +27,102 @@ const Home = (props) => {
       partialVisibilityGutter: 100
     }
   };
+  // creates new time object to be used to get current time
+  const today = new Date()
 
-  //filters activities by time
-  const activityFilter800 = props.activities?.filter(value => {
-    return +value.start_time < 800
+  //filters activities by time (milliseconds from Epoch of 1970)
+  const activityFilter30Min = props.activities?.filter(value => {
+    let startTimeinMillliseconds = Date.parse(value.start_time)
+    return startTimeinMillliseconds > today.getTime() && startTimeinMillliseconds < today.getTime() + 1800000
    })
    .map((value,index) => {
     return <div><ActivityCard activities={value} key={index}/></div>
   })
 
-  const activityFilter900 = props.activities?.filter(value => {
-    return +value.start_time >= 800 && +value.start_time < 900
+  const activityFilter1hour = props.activities?.filter(value => {
+    let startTimeinMillliseconds = Date.parse(value.start_time)
+    return startTimeinMillliseconds > today.getTime() + 1800001 && startTimeinMillliseconds < today.getTime() + 3600000
    })
    .map((value,index) => {
     return <div><ActivityCard activities={value} key={index}/></div>
   })
 
-  const activityFilter1100 = props.activities?.filter(value => {
-    return +value.start_time >= 900 && +value.start_time < 1100
+  const activityFilter2hour = props.activities?.filter(value => {
+    let startTimeinMillliseconds = Date.parse(value.start_time)
+    return startTimeinMillliseconds > today.getTime() + 3600001 && startTimeinMillliseconds < today.getTime() + 7200000
    })
    .map((value,index) => {
     return <div><ActivityCard activities={value} key={index}/></div>
   })
 
-  const activityFilter1500 = props.activities?.filter(value => {
-    return +value.start_time >= 1100 && +value.start_time < 1500
+  const activityFilter4hour = props.activities?.filter(value => {
+    let startTimeinMillliseconds = Date.parse(value.start_time)
+    return startTimeinMillliseconds > today.getTime() + 7200001 && startTimeinMillliseconds < today.getTime() + 14400000
    })
    .map((value,index) => {
     return <div><ActivityCard activities={value} key={index}/></div>
   })
 
-  const activityFilter2300 = props.activities?.filter(value => {
-    return +value.start_time >= 1500 && +value.start_time < 2300
-  })
-  .map((value,index) => {
+  const activityFilter8hour = props.activities?.filter(value => {
+    let startTimeinMillliseconds = Date.parse(value.start_time)
+    return startTimeinMillliseconds > today.getTime() + 14400001 && startTimeinMillliseconds < today.getTime() + 28800000
+   })
+   .map((value,index) => {
     return <div><ActivityCard activities={value} key={index}/></div>
   })
 
 
   return (
     <>
-
+    <div className='homeBody'>
     <div className='home_background'>
-    <AddActivityModal className='add_activity_button' currentUser={props.currentUser} activities={props.activities} createActivity={props.createActivity}/>
-    <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>30 MIN</span></h3>
-    <Carousel
-      partialVisible
-      infinite
-      responsive={responsive}
-      >
-        {activityFilter800}
-    </Carousel>
+      <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>30 MIN</span></h3>
+      <Carousel
+        partialVisible
+        infinite
+        responsive={responsive}
+        >
+        {activityFilter30Min}
+      </Carousel>
 
-    <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>1 HOUR</span></h3>
-    <Carousel
-      partialVisible
-      infinite
-      responsive={responsive}
-      >
-    {activityFilter900}
-    </Carousel>
+      <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>1 HOUR</span></h3>
+      <Carousel
+        partialVisible
+        infinite
+        responsive={responsive}
+        >
+        {activityFilter1hour}
+      </Carousel>
 
-    <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>2 HOURS</span></h3>
-    <Carousel
-      partialVisible
-      infinite
-      responsive={responsive}
-      >
-      {activityFilter1100}
-    </Carousel>
+      <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>2 HOURS</span></h3>
+      <Carousel
+        partialVisible
+        infinite
+        responsive={responsive}
+        >
+        {activityFilter2hour}
 
-    <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>4 HOURS</span></h3>
-    <Carousel
-      partialVisible
-      infinite
-      responsive={responsive}
-      >
-    {activityFilter1500}
-    </Carousel>
+      </Carousel>
 
-    <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>8 HOURS</span></h3>
-    <Carousel
-      partialVisible
-      infinite
-      responsive={responsive}
-      >
-    {activityFilter2300}
-    </Carousel>
-  </div>
+      <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>4 HOURS</span></h3>
+      <Carousel
+        partialVisible
+        infinite
+        responsive={responsive}
+        >
+        {activityFilter4hour}
+      </Carousel>
+
+      <h3 className='title'>ACTIVITIES HAPPENING IN THE NEXT<br/><span className='time-frame'>8 HOURS</span></h3>
+      <Carousel
+        partialVisible
+        infinite
+        responsive={responsive}
+        >
+        {activityFilter8hour}
+      </Carousel>
+    </div>
+    </div>
     </>
   )
 }

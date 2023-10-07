@@ -1,23 +1,55 @@
-.container-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.loginBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+.loginBody > img {
+  height: 8rem;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
 }
 
-body {
-    background-color: black;
-    height: 100vh;
+.loginForm > input {
+  margin: 0.5rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  padding: .5rem;
+}
+.loginButton {
+  display: flex;
+  font-size: 1.25rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 2.5rem;
+  margin: 0.5rem;
+  color: black;
+  background-color: #fd8a03;
+  border-style: none;
+  border-radius: .5rem;
 }
 
-.title_logo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 70px;
-    
+.titleLogo {
+  display: flex;
+  justify-content: center;
+  /* max-height: 10rem; */
+  max-width: 5rem;
+}
+
+.signup {
+  color: #fd8a03;
+}
+
+.loginBody > h1 {
+  color: white;
 }

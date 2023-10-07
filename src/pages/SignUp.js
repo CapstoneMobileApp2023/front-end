@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/SignUp.css"
 
-const SignUp = ({signup}) => {
+const SignUp = ({signup, logout}) => {
   const formRef = useRef ()
   const navigate = useNavigate()
 
@@ -18,9 +18,6 @@ const SignUp = ({signup}) => {
       "user":{ email: data.email, password: data.password, name: data.name, username: data.username, gender_identity: data.gender_identity, bio: data.bio}
     }
     signup(userInfo)
-    e.target.reset()
-    navigate("/")
-
   }
 
   const { value, reset, bindings } = useInput("");
@@ -45,8 +42,8 @@ const SignUp = ({signup}) => {
   return (
     <>
     <div className="title_logo">
-    <img src="/buddy.png"/>
-    <h1 id="buddy">BUDDY</h1>
+    <img src="/logo.png"/>
+    <h1 id="buddy">Promptu</h1>
     </div>
       <form ref={formRef} onSubmit={handleSubmit}>
         <div className="container">
@@ -59,7 +56,6 @@ const SignUp = ({signup}) => {
             onClearClick={reset}
             status={helper.color}
             color="warning"
-
             helperColor={helper.color}
             helperText={helper.text}
             type="email"
@@ -128,34 +124,28 @@ const SignUp = ({signup}) => {
        <Spacer y={1} />
 
         <Button
-              onClick={handleSubmit}
-              flat
-              auto
-              rounded
-              css={{ color: "black", bg: "#FFCD4E" }}
-              >
-              <Text
-                css={{ color: "inherit" }}
-                size={12}
-                weight="bold"
-                transform="uppercase"
-                >
-                Sign Up
-              </Text>
-            </Button>
+          onClick={handleSubmit}
+          flat
+          auto
+          rounded
+          css={{ color: "black", bg: "#FFCD4E" }}
+          >
+          <Text
+            css={{ color: "inherit" }}
+            size={12}
+            weight="bold"
+            transform="uppercase"
+            >
+            Sign Up
+          </Text>
+        </Button>
         <Spacer y={1} />
         <NavLink to="/login">
           <Button
-            flat
-            auto
-            rounded
-            css={{ color: "black", bg: "#FFCD4E" }}
+
             >
             <Text
-              css={{ color: "inherit" }}
-              size={12}
-              weight="bold"
-              transform="uppercase"
+
               >
               LogIn
             </Text>

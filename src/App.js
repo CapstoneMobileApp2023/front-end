@@ -1,9 +1,10 @@
-import { Routes, Route, useNavigate, NavLink, Navigate } from "react-router-dom"
+import { Routes, Route, useNavigate} from "react-router-dom"
 import { useState, useEffect } from "react";
 import './App.css';
-import Header from './components/Header/Header'
+import Header from './components/Header'
+import { MobileNavBar } from "./components/MobileNavBar";
 import Home from "./pages/Home";
-import BuddyProfile from "./pages/BuddyProfile";
+import BuddyProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 import ActivityShow from "./pages/ActivityShow";
 import SignUp from "./pages/SignUp";
@@ -19,20 +20,16 @@ function App() {
   const [activities, setActivities] = useState([])
   const [userActivity, setUserActivity] = useState([])
   const url = "http://localhost:3000"
-// const url = "https://buddy-backend.onrender.com"
-const navigate = useNavigate()
+// const url = "https://whim.onrender.com"
+  const navigate = useNavigate()
 
-useEffect(() => {
-  readActivity()
-}, [])
-
-useEffect(() => {
-  const loggedInUser = localStorage.getItem("token")
-  if (loggedInUser) {
-    setCurrentUser(loggedInUser)
-  }
-  readActivity()
-}, [])
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("token")
+    if (loggedInUser) {
+      setCurrentUser(loggedInUser)
+    }
+    readActivity()
+  }, [])
 
 // user_activities
   useEffect(() => {
@@ -74,7 +71,7 @@ const login = (userInfo) => {
     if (!response.ok) {
       throw Error(response.statusText)
     }
-    // store the token
+// store the token
     localStorage.setItem("token", response.headers.get("Authorization"))
     return response.json()
   })
@@ -105,6 +102,8 @@ const signup = (userInfo) => {
   .then(payload => {
     setCurrentUser(payload)
   })
+  .then(() => logout())
+  .then(() => navigate("/login"))
   .catch(error => console.log("login errors: ", error))
 }
 
@@ -168,23 +167,32 @@ const deleteActivity = (id) => {
   return (
       <>
       {currentUser && (
-      <Header currentUser={currentUser} logout={logout}/>
+        <Header currentUser={currentUser} logout={logout} createActivity={createActivity}/>
       )}
+
+
       <Routes>
         <Route path="/signup" element={<SignUp signup={signup} currentUser={currentUser}/>} />
         <Route path="/login" element={<LogIn login={login}/>} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="*" element={<Error />} />
 
 {/* Protected routes */}
         <Route element={<ProtectedRoutes currentUser={currentUser}/>} >
           <Route path="/" element={<Home activities={activities} currentUser={currentUser} createActivity={createActivity} exact/>}/>
+
           <Route path="/display/:category?" element={<ActivityFilter activities={activities}/>} />
+
           <Route path="/buddyprofile/:id" element={<BuddyProfile currentUser={currentUser} userActivity={userActivity} activities={activities}/>} />
+
           <Route path="/activityshow/:id" element={<ActivityShow activities={activities} currentUser={currentUser} updateActivity={updateActivity} deleteActivity={deleteActivity} createUserActivity={createUserActivity}/>} />
+
           <Route path="/activityedit/:id" element={<ActivityEdit activities={activities} updateActivity={updateActivity}/>} />
-          <Route path="*" element={<Error />} />
         </Route>
       </Routes>
+      {currentUser && (
+        <MobileNavBar currentUser={currentUser} logout={logout} createActivity={createActivity}/>
+      )}
       </>
   );
 }
